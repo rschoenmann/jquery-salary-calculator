@@ -3,5 +3,5 @@ console.log('js');
 
  function readyNow(){
     console.log('jquery is ready');
-     
+    
  }
