@@ -10,9 +10,16 @@ let totalAnnualSalaries = 0; //global variable so we can calculate across functi
     buttonClick();
  }//end readyNow
 
+function deleteButtonClick(){
+    $('#deleteButton').on('click', function(){
+        $(this).parent().parent().remove();
+    });
+
+}//end deleteButtonClick
+
+
  function buttonClick(){
     $('#submitButton').on('click', addNewEmployee);
-    //updateDom();
  }//end buttonClick
 
  //takes input from DOM, creates new object and pushes to employeeArray
@@ -32,6 +39,7 @@ let totalAnnualSalaries = 0; //global variable so we can calculate across functi
     $('#titleIn').val('');
     $('#annualSalaryIn').val('');
     displayInputs();
+    deleteButtonClick();
  }//end addNewEmployee
 
  function displayInputs(){
@@ -43,6 +51,7 @@ let totalAnnualSalaries = 0; //global variable so we can calculate across functi
     <td>${newest.id}</td>
     <td>${newest.title}</td>
     <td>${newest.annualSalary}</td>
+    <td><button id="deleteButton">Delete Employee</button></td>
     </tr>`);
     totalAnnualSalaries += parseFloat(newest.annualSalary);
     console.log(totalAnnualSalaries);
