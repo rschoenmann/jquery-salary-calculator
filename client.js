@@ -2,7 +2,6 @@ console.log('js');
  $(document).ready(readyNow);
 
 let employeeArray = []; //array to store new objects coming from user inputs
-let allAnnualSalaries = []; //array of just the annualSalary key of each object in employeeArray
 let totalAnnualSalaries = 0; //global variable so we can calculate across functions
 
  function readyNow(){
