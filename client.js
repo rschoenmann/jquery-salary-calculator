@@ -35,5 +35,20 @@ let employeeArray = [];
     <td>${newest.id}</td>
     <td>${newest.title}</td>
     <td>${newest.annualSalary}</td>
-    </tr>`)
+    </tr>`);
+    calculateMonthly(employeeArray);
  }//end displayInputs function
+
+ function calculateMonthly(employeeArray){
+    console.log('in calculateMonthly');
+    let monthlySalary = 0;
+    //for loop to access each newEmployeeObject's annual salary
+    for(let i=0; i<employeeArray.length; i++){
+        //add together and divide by 12 to get monthly salary
+        monthlySalary = (monthlySalary + employeeArray[i].annualSalary) / 12;
+        console.log(monthlySalary);
+        
+    }//end for loop
+    //put that in new variable of all total annual salaries (did this above at salaryTotal)
+    //postToDom(monthly)
+ }//end calculateMonthly function
