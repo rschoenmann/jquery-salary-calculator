@@ -23,6 +23,11 @@ let employeeArray = [];
         annualSalary: $('#annualSalaryIn').val()
     }//end newEmployeeObject constant
     employeeArray.push(newEmployeeObject);
+    $('#firstNameIn').val('');
+    $('#lastNameIn').val('');
+    $('#idNumberIn').val('');
+    $('#titleIn').val('');
+    $('#annualSalaryIn').val('');
     displayInputs();
  }//end addNewEmployee
 
@@ -41,13 +46,14 @@ let employeeArray = [];
 
  function calculateMonthly(employeeArray){
     console.log('in calculateMonthly');
-    let monthlySalary = 0;
+    let allAnnualSalaries = [];
     //for loop to access each newEmployeeObject's annual salary
     for(let i=0; i<employeeArray.length; i++){
+        //find each annualSalary in employeeArray and pull it into a new allSalaries array
+        allAnnualSalaries.push(employeeArray[i].annualSalary);
         //add together and divide by 12 to get monthly salary
-        monthlySalary = (monthlySalary + employeeArray[i].annualSalary) / 12;
-        console.log(monthlySalary);
-        
+        console.log(allAnnualSalaries);
+        //let totalSalaries = allAnnualSalaries.reduce(reduceSalaries);
     }//end for loop
     //put that in new variable of all total annual salaries (did this above at salaryTotal)
     //postToDom(monthly)
