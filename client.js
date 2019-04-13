@@ -46,15 +46,32 @@ let employeeArray = [];
 
  function calculateMonthly(employeeArray){
     console.log('in calculateMonthly');
-    let allAnnualSalaries = [];
+    const allAnnualSalaries = [];
     //for loop to access each newEmployeeObject's annual salary
     for(let i=0; i<employeeArray.length; i++){
         //find each annualSalary in employeeArray and pull it into a new allSalaries array
         allAnnualSalaries.push(employeeArray[i].annualSalary);
         //add together and divide by 12 to get monthly salary
         console.log(allAnnualSalaries);
-        //let totalSalaries = allAnnualSalaries.reduce(reduceSalaries);
+        const totalSalaries = allAnnualSalaries.reduce(reduceSalaries);
     }//end for loop
     //put that in new variable of all total annual salaries (did this above at salaryTotal)
     //postToDom(monthly)
  }//end calculateMonthly function
+
+ function reduceSalaries(total, value){
+   console.log(parseFloat(total) + parseFloat(value));
+    
+ }
+
+ function monthlyToDom(argument){
+    let el = $('#totalMonthlyOut');
+    //empty totalMonthlyOut
+    el.empty();
+    //append in updated monthly total
+    $('#totalMonthlyOut').append(`Total Monthly: ${argument}`);
+    //if it's > 20000, add red background
+    if (argument > 20000){
+        
+    }
+ }// end monthlyToDom function
