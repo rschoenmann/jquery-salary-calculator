@@ -56,10 +56,7 @@ function updateDom(){
     //append in updated monthly total
     let monthlyCosts = totalAnnualSalaries / 12;
     $('#totalMonthlyOut').append(`<div>Total Monthly:${monthlyCosts}</div>`);
-    //if (totalAnnualSalaries > 20000){
-       // $('#totalMonthlyOut').toggleClass('highlight');
-    //}//end if statement
+    if (monthlyCosts > 20000){
+       $('#totalMonthlyOut').toggleClass('highlight');
+    }//end if statement
  }// end updateDom function
-
-
- 
