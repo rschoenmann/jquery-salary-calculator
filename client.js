@@ -8,13 +8,13 @@ let totalAnnualSalaries = 0; //global variable so we can calculate across functi
  function readyNow(){
     console.log('jquery is ready');
     buttonClick();
+    $('#tableBody').on('click', '.deleteButton', deleteButtonClick);
  }//end readyNow
 
 function deleteButtonClick(){
-    $('#deleteButton').on('click', function(){
-        $(this).parent().parent().remove();
-    });
-
+    $(this).parent().parent().remove();
+    console.log('totally deleting');
+    
 }//end deleteButtonClick
 
 
@@ -51,8 +51,11 @@ function deleteButtonClick(){
     <td>${newest.id}</td>
     <td>${newest.title}</td>
     <td>${newest.annualSalary}</td>
-    <td><button id="deleteButton">Delete Employee</button></td>
+    <td><button class="deleteButton">Delete Employee</button></td>
     </tr>`);
+     $('#deleteButton').on('click', function () {
+         $(this).parent().parent().remove();
+     });
     totalAnnualSalaries += parseFloat(newest.annualSalary);
     console.log(totalAnnualSalaries);
     updateDom();
