@@ -1,9 +1,10 @@
 console.log('js');
  $(document).ready(readyNow);
 
-let employeeArray = [];
-let monthlySalaries = 0;
-let allAnnualSalaries = [];
+let employeeArray = []; //array to store new objects coming from user inputs
+let allAnnualSalaries = []; //array of just the annualSalary key of each object in employeeArray
+let totalAnnualSalaries = 0; //global variable so we can calculate across functions
+let monthlyCost = 0;
 
  function readyNow(){
     console.log('jquery is ready');
@@ -11,20 +12,20 @@ let allAnnualSalaries = [];
  }//end readyNow
 
  function buttonClick(){
-     //on button click, add new employee object
     $('#submitButton').on('click', addNewEmployee);
-    updateDom();
+    //updateDom();
  }//end buttonClick
 
+ //takes input from DOM, creates new object and pushes to employeeArray
  function addNewEmployee(){
     console.log('in addNewEmployee');
-    const newEmployeeObject = {
+    let newEmployeeObject = {
         firstName: $('#firstNameIn').val(),
         lastName: $('#lastNameIn').val(),
         id: $('#idNumberIn').val(),
         title: $('#titleIn').val(),
         annualSalary: $('#annualSalaryIn').val()
-    }//end newEmployeeObject constant
+    }//end newEmployeeObject
     employeeArray.push(newEmployeeObject);
     $('#firstNameIn').val('');
     $('#lastNameIn').val('');
@@ -44,36 +45,45 @@ let allAnnualSalaries = [];
     <td>${newest.title}</td>
     <td>${newest.annualSalary}</td>
     </tr>`);
-    calculateMonthly(employeeArray);
+    totalAnnualSalaries += parseFloat(newest.annualSalary);
+    console.log(totalAnnualSalaries);
+    
+    //calculateCosts(employeeArray);
  }//end displayInputs function
 
- function calculateMonthly(employeeArray){
-    console.log('in calculateMonthly');
-    const allAnnualSalaries = [];
-    //for loop to access each newEmployeeObject's annual salary
+ //access each newEmployeeObject's annual salary and pull into allAnnualSalaries array
+ /*function calculateCosts(){
+    console.log('in calculateCosts');
     for(let i=0; i<employeeArray.length; i++){
-        //find each annualSalary in employeeArray and pull it into a new allSalaries array
-        allAnnualSalaries.push(employeeArray[i].annualSalary);
-        //add together and divide by 12 to get monthly salary
+        
+        //allAnnualSalaries.push(parseFloat(employeeArray[i].annualSalary));
         console.log(allAnnualSalaries);
-        const totalSalaries = allAnnualSalaries.reduce(updateDom);
     }//end for loop
-    //put that in new variable of all total annual salaries (did this above at salaryTotal)
-    //postToDom(monthly)
+    calculateMonthly(allAnnualSalaries);
+ }//end gatherAllSalaries function
+*/
+ //take array from gatherAllSalaries, sum all values, and divide by 12
+ /*function calculateMonthly(allAnnualSalaries){
+    //for(let i=0; i<allAnnualSalaries.length; i++){
+        //let monthlyCost = totalAnnualSalaries + allAnnualSalaries[allAnnualSalaries.length -1];
+    //}
+    //console.log(monthlyCost);
+    
  }//end calculateMonthly function
-
- function updateDom(total, value){
-    monthlySalaries = ((parseFloat(total) + parseFloat(value)) / 12);
-    console.log(monthlySalaries);
+*/
+/* function updateDom(total, value){
+    totalAnnualSalaries = ((total + value) / 12);
+    console.log(totalAnnualSalaries);
     let el = $('#totalMonthlyOut');
     //empty totalMonthlyOut
     el.empty();
     //append in updated monthly total
-    $('#totalMonthlyOut').append(`<div>Total Monthly: ${monthlySalaries}</div>`);
-    if (monthlySalaries > 20000){
-        $('#totalMonthlyOut').toggleClass('highlight');
-    }//end if statement
+    $('#totalMonthlyOut').append(`<div>Total Monthly: ${totalAnnualSalaries}</div>`);
+    //if (totalAnnualSalaries > 20000){
+       // $('#totalMonthlyOut').toggleClass('highlight');
+    //}//end if statement
  }// end updateDom function
+ */
 
 
  
