@@ -4,7 +4,6 @@ console.log('js');
 let employeeArray = []; //array to store new objects coming from user inputs
 let allAnnualSalaries = []; //array of just the annualSalary key of each object in employeeArray
 let totalAnnualSalaries = 0; //global variable so we can calculate across functions
-let monthlyCost = 0;
 
  function readyNow(){
     console.log('jquery is ready');
@@ -47,43 +46,20 @@ let monthlyCost = 0;
     </tr>`);
     totalAnnualSalaries += parseFloat(newest.annualSalary);
     console.log(totalAnnualSalaries);
-    
-    //calculateCosts(employeeArray);
+    updateDom();
  }//end displayInputs function
 
- //access each newEmployeeObject's annual salary and pull into allAnnualSalaries array
- /*function calculateCosts(){
-    console.log('in calculateCosts');
-    for(let i=0; i<employeeArray.length; i++){
-        
-        //allAnnualSalaries.push(parseFloat(employeeArray[i].annualSalary));
-        console.log(allAnnualSalaries);
-    }//end for loop
-    calculateMonthly(allAnnualSalaries);
- }//end gatherAllSalaries function
-*/
- //take array from gatherAllSalaries, sum all values, and divide by 12
- /*function calculateMonthly(allAnnualSalaries){
-    //for(let i=0; i<allAnnualSalaries.length; i++){
-        //let monthlyCost = totalAnnualSalaries + allAnnualSalaries[allAnnualSalaries.length -1];
-    //}
-    //console.log(monthlyCost);
-    
- }//end calculateMonthly function
-*/
-/* function updateDom(total, value){
-    totalAnnualSalaries = ((total + value) / 12);
-    console.log(totalAnnualSalaries);
+function updateDom(){
     let el = $('#totalMonthlyOut');
     //empty totalMonthlyOut
     el.empty();
     //append in updated monthly total
-    $('#totalMonthlyOut').append(`<div>Total Monthly: ${totalAnnualSalaries}</div>`);
+    let monthlyCosts = totalAnnualSalaries / 12;
+    $('#totalMonthlyOut').append(`<div>Total Monthly:${monthlyCosts}</div>`);
     //if (totalAnnualSalaries > 20000){
        // $('#totalMonthlyOut').toggleClass('highlight');
     //}//end if statement
  }// end updateDom function
- */
 
 
  
