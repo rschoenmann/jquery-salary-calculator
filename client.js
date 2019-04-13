@@ -60,8 +60,8 @@ let employeeArray = [];
  }//end calculateMonthly function
 
  function reduceSalaries(total, value){
-   console.log(parseFloat(total) + parseFloat(value));
-    
+    const monthlySalaries = ((parseFloat(total) + parseFloat(value)) / 12);
+    console.log(monthlySalaries);
  }
 
  function monthlyToDom(argument){
@@ -69,9 +69,9 @@ let employeeArray = [];
     //empty totalMonthlyOut
     el.empty();
     //append in updated monthly total
-    $('#totalMonthlyOut').append(`Total Monthly: ${argument}`);
+    $('#totalMonthlyOut').append(`Total Monthly: ${monthlySalaries}`);
     //if it's > 20000, add red background
-    if (argument > 20000){
+    if (monthlySalaries > 20000){
         
     }
  }// end monthlyToDom function
