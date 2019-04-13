@@ -2,6 +2,8 @@ console.log('js');
  $(document).ready(readyNow);
 
 let employeeArray = [];
+let monthlySalaries = 0;
+let allAnnualSalaries = [];
 
  function readyNow(){
     console.log('jquery is ready');
@@ -11,6 +13,7 @@ let employeeArray = [];
  function buttonClick(){
      //on button click, add new employee object
     $('#submitButton').on('click', addNewEmployee);
+    updateDom();
  }//end buttonClick
 
  function addNewEmployee(){
@@ -53,25 +56,24 @@ let employeeArray = [];
         allAnnualSalaries.push(employeeArray[i].annualSalary);
         //add together and divide by 12 to get monthly salary
         console.log(allAnnualSalaries);
-        const totalSalaries = allAnnualSalaries.reduce(reduceSalaries);
+        const totalSalaries = allAnnualSalaries.reduce(updateDom);
     }//end for loop
     //put that in new variable of all total annual salaries (did this above at salaryTotal)
     //postToDom(monthly)
  }//end calculateMonthly function
 
- function reduceSalaries(total, value){
-    const monthlySalaries = ((parseFloat(total) + parseFloat(value)) / 12);
+ function updateDom(total, value){
+    monthlySalaries = ((parseFloat(total) + parseFloat(value)) / 12);
     console.log(monthlySalaries);
- }
-
- function monthlyToDom(argument){
     let el = $('#totalMonthlyOut');
     //empty totalMonthlyOut
     el.empty();
     //append in updated monthly total
-    $('#totalMonthlyOut').append(`Total Monthly: ${monthlySalaries}`);
-    //if it's > 20000, add red background
+    $('#totalMonthlyOut').append(`<div>Total Monthly: ${monthlySalaries}</div>`);
     if (monthlySalaries > 20000){
-        
-    }
- }// end monthlyToDom function
+        $('#totalMonthlyOut').toggleClass('highlight');
+    }//end if statement
+ }// end updateDom function
+
+
+ 
