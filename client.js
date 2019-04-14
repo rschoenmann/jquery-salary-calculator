@@ -66,7 +66,7 @@ function updateDom(){
     el.empty();
     //append in updated monthly total
     let monthlyCosts = totalAnnualSalaries / 12;
-    $('#totalMonthlyOut').append(`<div>Total Monthly:${monthlyCosts}</div>`);
+    $('#totalMonthlyOut').append(`<div>Total Monthly: $${monthlyCosts.toFixed(2)}</div>`);
     if (monthlyCosts > 20000){
        $('#totalMonthlyOut').addClass('highlight');
     }//end if statement
